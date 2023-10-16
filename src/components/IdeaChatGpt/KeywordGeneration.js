@@ -101,7 +101,7 @@ export default function KeywordGeneration() {
             textAlign: "center",
           }}
         >
-          기본생성
+          키워드
         </Typography>
         <TextField value={title} onChange={handleChange} label="title" />
 
