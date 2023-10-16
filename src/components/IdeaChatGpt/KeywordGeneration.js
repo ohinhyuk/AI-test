@@ -1,13 +1,4 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 
 const { Configuration, OpenAIApi } = require("openai");
@@ -19,9 +10,9 @@ const openai = new OpenAIApi(configuration);
 
 export default function BasicGeneration() {
   const [title, setTitle] = useState("");
-  const [firstOption, setFirstOption] = useState("Low");
-  const [secondOption, setSecondOption] = useState("Low");
-  const [thirdOption, setThirdOption] = useState("Low");
+  const [keywords, setKeywords] = useState("");
+  //   const [secondOption, setSecondOption] = useState("Low");
+  //   const [thirdOption, setThirdOption] = useState("Low");
   const [result, setResult] = useState("");
   const TEMPLATE = `
   I am in the process of planning a {Massage Chair} product. Please propose random words from the perspective of a product planner. The words provided should act as keywords to assist in divergent thinking in planning the massage chair. Please provide 30 keywords.
@@ -35,7 +26,7 @@ export default function BasicGeneration() {
     All responses should be in Korean.
 
     ##Format:
-    keyword1: ${firstOption} in JSON format
+    ${keywords.map((key, index) => `keyword${index + 1}: ${key}`)}
 
     `;
 
@@ -96,27 +87,13 @@ export default function BasicGeneration() {
         </Typography>
         <TextField value={title} onChange={handleChange} label="title" />
 
-        {[
-          { state: firstOption, setState: setFirstOption },
-          { state: secondOption, setState: setSecondOption },
-          { state: thirdOption, setState: setThirdOption },
-        ].map((obj, index) => (
-          <FormControl
-            variant="outlined"
-            size="small"
-            style={{ width: "200px" }}
-          >
-            <InputLabel>{name[index]}</InputLabel>
-            <Select
-              value={obj.state}
-              onChange={(e) => obj.setState(e.target.value)}
-              label="Priority"
-            >
-              <MenuItem value={"High"}>High</MenuItem>
-              <MenuItem value={"Low"}>Low</MenuItem>
-            </Select>
-          </FormControl>
-        ))}
+        <TextField
+          sx={{ width: "500px" }}
+          value={keywords}
+          onChange={(e) => setKeywords(e.target.value)}
+          placeholder="키워드들을 #으로 구분해주세요. ex) key1#key2#key3"
+          label="키워드"
+        />
 
         <Button onClick={handleGeneration}>아이디어 생성</Button>
       </Box>
