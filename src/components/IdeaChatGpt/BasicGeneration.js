@@ -91,7 +91,7 @@ export default function BasicGeneration() {
     <Box
       sx={{
         width: "100vw",
-        height: "100vh",
+        height: "150vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
