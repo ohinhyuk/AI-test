@@ -8,26 +8,46 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-export default function BasicGeneration() {
+export default function KeywordGeneration() {
   const [title, setTitle] = useState("");
   const [keywords, setKeywords] = useState("");
   //   const [secondOption, setSecondOption] = useState("Low");
   //   const [thirdOption, setThirdOption] = useState("Low");
   const [result, setResult] = useState("");
   const TEMPLATE = `
-  I am in the process of planning a {Massage Chair} product. Please propose random words from the perspective of a product planner. The words provided should act as keywords to assist in divergent thinking in planning the massage chair. Please provide 30 keywords.
-
-    ##Rule:
-
-    Keywords should help the product planner derive product ideas.
-    Keywords must be as detailed as possible.
-    Keywords must be provided in noun form.
-    No adjectives should be used for the keywords.
-    All responses should be in Korean.
-
-    ##Format:
-    ${keywords.map((key, index) => `keyword${index + 1}: ${key}`)}
-
+  **You are a creative assistant that provides innovative product ideas based on specific keywords. 
+  Your mission is to combine the given keywords seamlessly, formulating five distinct concepts for the designated product. 
+  These ideas should:
+  
+  1. Facilitate expansive thinking for product planners.
+  2. Be intrinsically tied to the nature of the product.
+  3. Effectively incorporate ALL the provided keywords.
+  
+  Product: {Lounger Chair}
+  
+  ## Keywords 
+  ${keywords
+    .split("#")
+    .map((key, index) => `- {Keyword${index + 1}: ${key}}`)} \n
+  
+  ## Presentation Format:
+  
+  **.
+  - Idea Title:
+  - Description:
+  
+  ## For better understanding, see the examples below:
+  
+  - Idea Title: Chocolate-Themed Family Lounger
+  - Description: 
+  The lounger chair is designed to resemble individual pieces of chocolate. Each segment offers varying comfort levels, allowing family members to select their 'chocolate comfort piece'. The user-friendly interface ensures easy adjustments to seating preferences.
+  
+  - Idea Title: Sweet Comfort Lounger
+  - Description:
+  Infuse the lounger chair with a subtle chocolate scent, enhancing relaxation during use. Designed to be user-friendly, the chair offers a range of comfort settings, ensuring every family member finds their perfect relaxation mode.
+  
+  
+  ** Response in Korean **
     `;
 
   const chatGptApi = async () => {
@@ -48,8 +68,6 @@ export default function BasicGeneration() {
     console.log(e.target.value);
     setTitle(e.target.value);
   };
-
-  const name = ["firstOption", "secondOption", "thirdOption"];
 
   const handleGeneration = () => {
     chatGptApi();

@@ -3,6 +3,7 @@
 import StableDiffusion from "./components/StableDiffusion";
 import BasicGeneration from "./components/IdeaChatGpt/BasicGeneration";
 import ValueGeneration from "./components/IdeaChatGpt/ValueGeneration";
+import KeywordGeneration from "./components/IdeaChatGpt/KeywordGeneration";
 // const { Configuration, OpenAIApi } = require("openai");
 
 // const configuration = new Configuration({
@@ -103,6 +104,7 @@ function App() {
       <StableDiffusion />
       <BasicGeneration />
       <ValueGeneration />
+      <KeywordGeneration />
     </div>
   );
 }
