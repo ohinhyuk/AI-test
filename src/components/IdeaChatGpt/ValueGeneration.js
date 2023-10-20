@@ -1,5 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { useState } from "react";
+import ValueAutoKeyword from "./ValueAutoKeyword";
 
 const { Configuration, OpenAIApi } = require("openai");
 
@@ -128,6 +129,8 @@ export default function ValueGeneration() {
           {result.split("아이디어 이름:").join("\n아이디어 이름:")}
         </Typography>
       </Box>
+
+      <ValueAutoKeyword />
     </Box>
   );
 }

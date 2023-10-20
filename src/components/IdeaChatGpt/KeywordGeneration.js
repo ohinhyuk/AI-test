@@ -1,5 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { useState } from "react";
+import RandomAutoKeyword from "./RandomAutoKeyword";
 
 const { Configuration, OpenAIApi } = require("openai");
 
@@ -130,6 +131,7 @@ export default function KeywordGeneration() {
           {result.split("아이디어 이름:").join("\n아이디어 이름:")}
         </Typography>
       </Box>
+      <RandomAutoKeyword />
     </Box>
   );
 }
