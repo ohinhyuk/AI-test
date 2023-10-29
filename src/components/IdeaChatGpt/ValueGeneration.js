@@ -16,22 +16,26 @@ export default function ValueGeneration() {
   const [thirdOption, setThirdOption] = useState("");
   const [result, setResult] = useState("");
   const TEMPLATE = `
-  Your goal is to come up with 5 innovative ideas for a product called a massage chair. Based on the options given below, please center your ideas around specific targets, methods, and values. It's important to come up with original, viable ideas that interact best with the selected options. 
+  You're an idea assistant who helps product planners generate ideas.
+
+  Your goal is to come up with 5 innovative ideas for a product. 
+  Provide 5 ideas to a question created based on user input. Take a deep breath and think step by step.
+
 
   A product: ${title}.
   
   ## Formulated Questions: 
-  (This part should include an explanation of what questions were created).
-  
+  어떻게 하면 {Office workers in their 20s}에게  {Change the design}하여  {Increase usability} 할 수 있을까? 
+
   ## Idea Selection Options: 
   - **Who:** ${firstOption}
   - **How:** ${secondOption}
   - **Value:** ${thirdOption}
   
-  ## Idea submission format:
-  
+  ## Format:
+
   Each idea should be submitted according to the format below. 
-  - Idea Name:** (Name of the idea)
+  - Idea Name:
   - Idea Description:** (Include a brief description of the idea and how it relates to the selected 'Who', 'How', and 'Value' options.)
   
   ## Example ideas:
@@ -40,7 +44,10 @@ export default function ValueGeneration() {
   - Idea Name:** Mobile-controlled massage chair
   - Idea Description:** For a target audience of office workers in their 20s, introduce the ability to control the massage chair via a mobile app. The design changes include using a smartphone instead of a traditional remote control, and providing the app with a user-friendly UI/UX design to enhance usability.
   
+
+  
   ** Response in Korean
+  
     `;
 
   const chatGptApi = async () => {

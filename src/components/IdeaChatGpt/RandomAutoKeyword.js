@@ -31,18 +31,21 @@ export default function RandomAutoKeyword() {
   //     `;
 
   const TEMPLATE = `
+
   I am in the process of planning a ${title} product. Please propose random words from the perspective of a product planner. The words provided should act as keywords to assist in divergent thinking in planning the massage chair. Please provide 30 keywords.
 
-  ##Rule:
-  
-  Keywords should help the product planner derive product ideas.
-  Keywords must be as detailed as possible.
-  Keywords must be provided in noun form.
-  No adjectives should be used for the keywords.
-  All responses should be in Korean.
-  
-  ##Format:
-  keyword1: {keyword} in JSON format
+##Rule:
+
+Keywords should help the product planner derive product ideas.
+Keywords must be as detailed as possible.
+Keywords must be provided in noun form.
+No adjectives should be used for the keywords.
+All responses should be in Korean.
+
+##Format:
+keyword1: {keyword} in JSON format
+
+
 `;
 
   const chatGptApi = async () => {

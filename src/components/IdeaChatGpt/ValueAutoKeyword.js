@@ -32,18 +32,17 @@ export default function ValueAutoKeyword() {
 
   const TEMPLATE = `
 
-When planning a product like a ${title}, I need you to identify 20 keywords per category that would be relevant to a product planner. Your keywords should be relevant to the product and should help the product planner plan the product.
+I'm planning a product in the  ${title} category and need your assistance. Could you identify 20 keywords per category that would be relevant and impactful for a product planner like me, ensuring they are closely related to the {chair} product and can effectively guide the product planning process? The categories I'm focusing on are:
 
-Category: ${title}
-Target: {for example, seniors, women in their 30s, people with herniated discs}
-
+Categories:
+Target: {e.g., seniors, women in their 30s, people with herniated discs}
 Method:
+Result:
+Let's maintain the format as:
 
-Results:
+{Category: [20 keywords]}
 
-Format:
-
-{category: 20 keywords}
+** Response in Korean **
 `;
 
   const chatGptApi = async () => {

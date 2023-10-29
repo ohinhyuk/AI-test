@@ -60,8 +60,12 @@ export default function BasicGeneration() {
   -Idea Description:
   \n
   
+  
+
   **Respone in Korean
+
   `;
+  // /check {database} and come up with 5 ideas that are different in {database}.
 
   const chatGptApi = async () => {
     const completion = await openai.createChatCompletion({
@@ -86,6 +90,19 @@ export default function BasicGeneration() {
 
   const handleGeneration = () => {
     chatGptApi();
+  };
+
+  const optionConverter = (option) => {
+    switch (option) {
+      case "firstOption":
+        return "Degree of innovation of the idea";
+      case "secondOption":
+        return "The extent to which the market for the product will change";
+      case "thirdOption":
+        return "Uses of the product";
+      default:
+        return "error";
+    }
   };
   return (
     <Box
@@ -130,7 +147,7 @@ export default function BasicGeneration() {
             size="small"
             style={{ width: "200px" }}
           >
-            <InputLabel>{name[index]}</InputLabel>
+            <InputLabel>{optionConverter(name[index])}</InputLabel>
             <Select
               value={obj.state}
               onChange={(e) => obj.setState(e.target.value)}
