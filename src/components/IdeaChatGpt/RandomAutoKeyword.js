@@ -57,6 +57,7 @@ keyword1: {keyword} in JSON format
           content: TEMPLATE,
         },
       ],
+      temperature: 0,
     });
 
     setResult(completion.data.choices[0].message.content);

@@ -54,6 +54,7 @@ Let's maintain the format as:
           content: TEMPLATE,
         },
       ],
+      temperature: 0,
     });
 
     setResult(completion.data.choices[0].message.content);
