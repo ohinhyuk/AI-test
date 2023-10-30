@@ -32,18 +32,29 @@ export default function ValueAutoKeyword() {
 
   const TEMPLATE = `
 
-I'm planning a product in the  ${title} category and need your assistance. Could you identify 20 keywords per category that would be relevant and impactful for a product planner like me, ensuring they are closely related to the {chair} product and can effectively guide the product planning process? The categories I'm focusing on are:
+  product:${title}
 
-Categories:
-Target: {e.g., seniors, women in their 30s, people with herniated discs}
-Method:
-Result:
-Let's maintain the format as:
+  Your keywords should be relevant to the product and should help the product planner plan the product. Take a deep breath and think step by step
+  
+  #Category:
+  
+  -Target: {for example, seniors, women in their 30s, people with herniated discs}
+  -Method:
+  -Results:
+  
+  ##Format: {you need you to identify 20 keywords for each category (target, Method,Result) that would be relevant to a product planner. }
+  
+  Target:
+  20 each(number: keyword)in json format like "Target" : ["keyword1" , "keyword2"]
+  Method:
+  20 each(number: keyword)in json format like "Method" : ["keyword1" , "keyword2"]
+  Result:
+  20 each(number: keyword)in json format like "Result" : ["keyword1" , "keyword2"]
+  
+  
+  ** Response in Korean **
 
-{Category: [20 keywords]}
-
-** Response in Korean **
-`;
+  `;
 
   const chatGptApi = async () => {
     const completion = await openai.createChatCompletion({
@@ -54,7 +65,6 @@ Let's maintain the format as:
           content: TEMPLATE,
         },
       ],
-      temperature: 0,
     });
 
     setResult(completion.data.choices[0].message.content);
